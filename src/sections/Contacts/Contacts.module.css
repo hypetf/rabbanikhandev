@@ -1,0 +1,349 @@
+.contacts {
+    min-height: 90vh;
+    /* width: 100vw; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.contactsContent {
+    position: relative;
+    z-index: 1;
+    width: 70vw;
+    /* max-width: 900px; */
+    min-height: 70vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    background: rgba(0,0,0,0.7);
+    border-radius: 4px;
+    /* box-shadow: 0 8px 32px #000a; */
+    overflow: hidden;
+    background: url('../../assets/waves.png') center center/cover no-repeat;
+    box-shadow: 0 0 30px rgba(255,255,255,.1);
+}
+
+.contactsLeft {
+    flex: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    color: #fff;
+    background: transparent;
+}
+
+.contactsLeft h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    /* margin-bottom: 2.5rem; */
+    opacity: 0.85;
+}
+
+.contactsLeft .bigText {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    /* margin-bottom: 2.5rem; */
+}
+
+.contactsLeft .email {
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.contactsLeft .email:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.contactsLeftBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactsLeft .socials {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.contactsLeft .socials img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+.contactsLeft .socials img:hover {
+    opacity: 1;
+}
+
+.contactsRight {
+    flex: 1;
+    background: rgba(0,0,0,0.85);
+    padding: 2.5rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-radius: 6px; */
+    min-width: 320px;
+    margin: 1.5rem;
+}
+
+#formTitle {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+}
+
+.formTabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+.formTab {
+    flex: 1;
+    padding: 1rem 2rem;
+    background: none;
+    border: 1.5px solid #444;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    /* border-radius: 4px; */
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.formTab:hover {
+    background: rgba(255,255,255,.3);
+    color: #111;
+    border-color: rgba(255,255,255,.5);
+}
+
+.formTab.active {
+    background: #fff;
+    color: #111;
+    border-color: #fff;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    position: relative;
+}
+.formGroup label {
+    font-size: 0.98rem;
+    margin-bottom: 0.3rem;
+    color: #eee;
+    font-weight: 500;
+}
+.formInput, .formTextarea {
+    background: transparent;
+    /* border: 1.5px solid #444; */
+    border: none;
+    border-bottom: 1px solid #444;
+    /* border-radius: 4px; */
+    color: #fff;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.formInput:focus, .formTextarea:focus {
+    border-color: #fff;
+}
+
+/* Override browser autocomplete styling */
+.formInput:-webkit-autofill,
+.formInput:-webkit-autofill:hover,
+.formInput:-webkit-autofill:focus,
+.formInput:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: transparent !important;
+}
+
+.formTextarea {
+    min-height: 200px;
+    max-height: 450px;
+    resize: vertical;
+    border: 1.5px solid #444;
+}
+
+.charCount {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.75rem;
+    color: #fff;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.formAttach {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.98rem;
+    margin-bottom: 1.2rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.formAttach:hover {
+    opacity: 1;
+}
+.attachText {
+    color: inherit;
+    transition: color 0.2s;
+}
+.attachmentSelected {
+    cursor: default !important;
+}
+.attachmentFile {
+    display: flex;
+    align-items: center;
+    /* gap: 0.5rem; */
+    color: #fff;
+    font-size: 0.98rem;
+    margin-left: 0.5rem;
+}
+
+.removeAttachment {
+    color: #fff;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formSend {
+    align-self: flex-end;
+    padding: 1rem 2rem;
+    background: #fff;
+    color: #111;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.formSend:hover {
+    background: rgba(255,255,255,.5);
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .contactsContent {
+        flex-direction: column;
+        min-width: 0;
+        width: 98vw;
+        max-width: 98vw;
+        align-items: stretch;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    /* Hide "CONTACT ME" text on mobile */
+    .contactsLeft h2 {
+        display: none;
+    }
+    
+    /* Hide email and socials in left section on mobile */
+    .contactsLeftBottom {
+        display: none;
+    }
+    
+    /* Reorganize layout for mobile */
+    .contactsLeft {
+        order: 1;
+        padding: 1rem 1.2rem;
+        background: transparent;
+        flex: none;
+    }
+    
+    .contactsRight {
+        order: 2;
+        margin: 0;
+        padding: 2rem 1.2rem;
+        flex: none;
+    }
+    
+    /* Show only big text above form */
+    .contactsLeft .bigText {
+        font-size: 3rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    
+    /* Show mobile contact info section */
+    .mobileContactInfo {
+        display: block !important;
+        order: 3;
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* Create a new section below form for contact info */
+/* Mobile contact info section */
+.mobileContactInfo {
+    display: none;
+    padding: 1.5rem 1.2rem;
+    /* background: rgba(0,0,0,0.85); */
+    border-top: 1px solid #333;
+    color: #fff;
+}
+
+.mobileContactInfo .email {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.mobileContactInfo .socials {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileContactInfo .socials img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.mobileContactInfo .socials img:hover {
+    opacity: 1;
+}
+
+.paperclipIcon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    display: inline-block;
+}

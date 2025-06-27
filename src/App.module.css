@@ -1,0 +1,30 @@
+.app {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/src/assets/noise.png') repeat;
+  background-size: cover;
+  opacity: .6;
+} */
+
+section {
+  /* padding: 2rem 4rem; */
+  padding: 0;
+}
