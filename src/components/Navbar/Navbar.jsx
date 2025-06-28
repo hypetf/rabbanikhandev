@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo_light from '/logo_light.png'
+import { useTranslation } from '../../hooks/useTranslation'
 
 import styles from './Navbar.module.css'
 
@@ -13,6 +14,7 @@ export default function Navbar() {
   const lastHideY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t, language, toggleLanguage } = useTranslation();
 
   // If not on home, no active section
   const isHome = location.pathname === '/';
@@ -125,35 +127,35 @@ export default function Navbar() {
               onClick={handleNavClick('about')}
               className={activeSection === 'about' ? styles.active : ''}
             >
-              About me
+              {t('nav.aboutMe')}
             </a>
             <a 
               href="#designs" 
               onClick={handleNavClick('designs')}
               className={activeSection === 'designs' ? styles.active : ''}
             >
-              My Designs
+              {t('nav.myDesigns')}
             </a>
             <a 
               href="#projects" 
               onClick={handleNavClick('projects')}
               className={activeSection === 'projects' ? styles.active : ''}
             >
-              My Projects
+              {t('nav.myProjects')}
             </a>
             <a 
               href="#skills" 
               onClick={handleNavClick('skills')}
               className={activeSection === 'skills' ? styles.active : ''}
             >
-              My Skills
+              {t('nav.mySkills')}
             </a>
             <a 
               href="#contact" 
               onClick={handleNavClick('contact')}
               className={activeSection === 'contact' ? styles.active : ''}
             >
-              Contact me
+              {t('nav.contactMe')}
             </a>
           </div>
           <button
@@ -187,49 +189,64 @@ export default function Navbar() {
               onClick={handleNavClick('about')}
               className={activeSection === 'about' ? styles.active : ''}
             >
-              About me
+              {t('nav.aboutMe')}
             </a>
             <a 
               href="#designs" 
               onClick={handleNavClick('designs')}
               className={activeSection === 'designs' ? styles.active : ''}
             >
-              My Designs
+              {t('nav.myDesigns')}
             </a>
             <a 
               href="#projects" 
               onClick={handleNavClick('projects')}
               className={activeSection === 'projects' ? styles.active : ''}
             >
-              My Projects
+              {t('nav.myProjects')}
             </a>
             <a 
               href="#skills" 
               onClick={handleNavClick('skills')}
               className={activeSection === 'skills' ? styles.active : ''}
             >
-              My Skills
+              {t('nav.mySkills')}
             </a>
             <a 
               href="#contact" 
               onClick={handleNavClick('contact')}
               className={activeSection === 'contact' ? styles.active : ''}
             >
-              Contact me
+              {t('nav.contactMe')}
             </a>
+            <div className={styles.mobileLanguageToggle}>
+              <button
+                className={`${styles.mobileLangBtn} ${language === 'en' ? styles.active : ''}`}
+                onClick={() => language !== 'en' && toggleLanguage()}
+              >
+                EN
+              </button>
+              <span className={styles.mobileLangSeparator}>|</span>
+              <button
+                className={`${styles.mobileLangBtn} ${language === 'it' ? styles.active : ''}`}
+                onClick={() => language !== 'it' && toggleLanguage()}
+              >
+                ITA
+              </button>
+            </div>
             <a 
               href="#" 
               onClick={() => setMenuOpen(false)}
               style={{marginTop: '2rem', fontSize: '1rem', opacity: 0.7}}
             >
-              Cookie usage
+              {t('nav.cookieUsage')}
             </a>
             <a 
               href="#" 
               onClick={() => setMenuOpen(false)}
               style={{fontSize: '1rem', opacity: 0.7}}
             >
-              Privacy policy
+              {t('nav.privacyPolicy')}
             </a>
           </nav>
         </div>

@@ -12,6 +12,7 @@ import pinkdrips from '../../assets/pinkdrips.png'
 import Blob from '../../components/Blob/Blob'
 import { useFadeInOnScroll } from '../../hooks/useFadeInOnScroll'
 import { usePageVisibility } from '../../hooks/usePageVisibility'
+import { useTranslation } from '../../hooks/useTranslation'
 
 // Array of design objects
 const designs = [
@@ -65,6 +66,7 @@ export default function Designs() {
   const [refImg, visibleImg] = useFadeInOnScroll();
   const [refTitle, visibleTitle] = useFadeInOnScroll();
   const isVisible = usePageVisibility();
+  const { t } = useTranslation();
 
   // Unified progress and image change effect
   useEffect(() => {
@@ -192,7 +194,7 @@ export default function Designs() {
           <img src={dribbble_logo} alt="logo" />
         </a>
         <div className={styles.divider}></div>
-        <h1>Designs</h1>
+        <h1>{t('designs.title')}</h1>
       </div>
       <div className={styles.designs_container}>
         <div ref={refImg} className={`${styles.designs_image_wrapper} fade-in-up${visibleImg ? ' visible' : ''}`}>
@@ -216,13 +218,13 @@ export default function Designs() {
         <div className={styles.fullscreenOverlay} onClick={handleOverlayClick}>
           <div className={styles.fullscreenContent}>
             <button className={styles.closeButton} onClick={handleCloseFullscreen}>
-              &times;
+              {t('designs.close')}
             </button>
             
             {/* Zoom Controls */}
             <div className={styles.zoomControls}>
               <button onClick={handleZoomOut} disabled={zoom <= 0.5}>−</button>
-              <button onClick={handleResetZoom}>Reset</button>
+              <button onClick={handleResetZoom}>{t('designs.reset')}</button>
               <button onClick={handleZoomIn} disabled={zoom >= 4}>+</button>
             </div>
 

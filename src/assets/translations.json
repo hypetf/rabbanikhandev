@@ -1,0 +1,162 @@
+{
+  "en": {
+    "lang": "en",
+    "nav": {
+      "aboutMe": "About me",
+      "myDesigns": "My Designs",
+      "myProjects": "My Projects",
+      "mySkills": "My Skills",
+      "contactMe": "Contact me",
+      "cookieUsage": "Cookie usage",
+      "privacyPolicy": "Privacy policy"
+    },
+    "hero": {
+      "title": "RABBANI KHAN",
+      "subtitle": "Full Stack Developer",
+      "description1": "I am a Web & Software Developer located in Manchester, currently a full-time student pursuing Computer Science Bachelor's degree program at Manchester Metropolitan University where I am enhancing my knowledge in the field.",
+      "description2": "One of my greatest achievement is being a finalist in the national competition WorldSkills UK in Web Design & Development.",
+      "downloadCV": "Download my CV",
+      "exploreMore": "Explore more",
+      "scrollToView": "Scroll to view more"
+    },
+    "designs": {
+      "title": "Designs",
+      "reset": "Reset",
+      "close": "×"
+    },
+    "projects": {
+      "title": "Projects",
+      "viewOnGitHub": "View on GitHub"
+    },
+    "skills": {
+      "title": "Skills & Tools",
+      "worldSkillsTitle": "WORLD SKILLS UK FINALIST",
+      "worldSkillsDescription1": "In 2021, I had reached the finals of WorldSkills UK, representing my region Greater Manchester in one of the most prestigious skills competitions in the country. Competing against the best young talent across the UK, I showcased my expertise in Web Design and Development, gaining valuable experience and national recognition.",
+      "worldSkillsDescription2": "WorldSkills UK is a member of WorldSkills, a global movement of over 80 countries.\nWorldSkills supports young people across the world via competitions-based training,\nassessment and benchmarking, with members' national teams ultimately testing their\nability to achieve world-class standards in the biennial 'skills olympics'.",
+      "readMore": "READ MORE",
+      "highestScore": "HIGHEST SCORE IN THE",
+      "northWest": "NORTH WEST",
+      "relatedLinks": "Related Links",
+      "close": "Close"
+    },
+    "contact": {
+      "title": "CONTACT ME",
+      "letsWorkTogether": "LET'S\nWORK\nTOGETHER",
+      "interestedIn": "I'm interested in...",
+      "hiring": "Hiring",
+      "project": "Project",
+      "other": "Other",
+      "yourName": "Your name",
+      "yourEmail": "Your email",
+      "yourMessage": "Your message...",
+      "addAttachment": "Add attachment",
+      "sendMessage": "Send message",
+      "messageSent": "Message sent successfully!",
+      "nameRequired": "Name is required.",
+      "emailRequired": "Email is required.",
+      "invalidEmail": "Invalid email.",
+      "messageRequired": "Message is required.",
+      "messageTooLong": "Message too long.",
+      "captchaRequired": "Please complete the CAPTCHA.",
+      "somethingWentWrong": "Something went wrong, try directly emailing me instead.",
+      "failedToSend": "Failed to send."
+    },
+    "footer": {
+      "fullStackDeveloper": "Full Stack Web Developer",
+      "backToTop": "Back to top",
+      "downloadCV": "Download my CV",
+      "privacyPolicy": "Privacy Policy",
+      "cookiesUsage": "Cookies usage",
+      "leaveALike": "Leave a like!"
+    },
+    "cookie": {
+      "text": "This website makes use of essential cookies.",
+      "confirm": "Confirm"
+    },
+    "notFound": {
+      "title": "404",
+      "subtitle": "Page Not Found",
+      "goHome": "Go Home"
+    }
+  },
+  "it": {
+    "lang": "it",
+    "nav": {
+      "aboutMe": "Chi sono",
+      "myDesigns": "I miei design",
+      "myProjects": "I miei progetti",
+      "mySkills": "Le mie competenze",
+      "contactMe": "Contattami",
+      "cookieUsage": "Utilizzo dei cookie",
+      "privacyPolicy": "Informativa sulla privacy"
+    },
+    "hero": {
+      "title": "RABBANI KHAN",
+      "subtitle": "Sviluppatore Full Stack",
+      "description1": "Sono uno sviluppatore web e software con sede a Manchester, attualmente studente a tempo pieno che persegue il programma di laurea in Informatica presso la Manchester Metropolitan University dove sto migliorando le mie conoscenze nel campo.",
+      "description2": "Uno dei miei più grandi successi è essere stato finalista nella competizione nazionale WorldSkills UK in Web Design & Development.",
+      "downloadCV": "Scarica il mio CV",
+      "exploreMore": "Scopri di più",
+      "scrollToView": "Scorri per vedere di più"
+    },
+    "designs": {
+      "title": "Design",
+      "reset": "Ripristina",
+      "close": "×"
+    },
+    "projects": {
+      "title": "Progetti",
+      "viewOnGitHub": "Vedi su GitHub"
+    },
+    "skills": {
+      "title": "Competenze e Strumenti",
+      "worldSkillsTitle": "FINALISTA WORLD SKILLS UK",
+      "worldSkillsDescription1": "Nel 2021, ho raggiunto le finali di WorldSkills UK, rappresentando la mia regione Greater Manchester in una delle competizioni di competenze più prestigiose del paese. Gareggiando contro i migliori giovani talenti del Regno Unito, ho mostrato la mia esperienza in Web Design e Development, acquisendo esperienza preziosa e riconoscimento nazionale.",
+      "worldSkillsDescription2": "WorldSkills UK è membro di WorldSkills, un movimento globale di oltre 80 paesi.\nWorldSkills supporta i giovani in tutto il mondo attraverso formazione basata su competizioni,\nvalutazione e benchmarking, con le squadre nazionali dei membri che testano la loro\ncapacità di raggiungere standard di livello mondiale nelle 'olimpiadi delle competenze' biennali.",
+      "readMore": "LEGGI DI PIÙ",
+      "highestScore": "PUNTEGGIO PIÙ ALTO NEL",
+      "northWest": "NORD OVEST",
+      "relatedLinks": "Link correlati",
+      "close": "Chiudi"
+    },
+    "contact": {
+      "title": "CONTATTAMI",
+      "letsWorkTogether": "LAVORIAMO\nINSIEME",
+      "interestedIn": "Sono interessato a...",
+      "hiring": "Assunzione",
+      "project": "Progetto",
+      "other": "Altro",
+      "yourName": "Il tuo nome",
+      "yourEmail": "La tua email",
+      "yourMessage": "Il tuo messaggio...",
+      "addAttachment": "Aggiungi allegato",
+      "sendMessage": "Invia messaggio",
+      "messageSent": "Messaggio inviato con successo!",
+      "nameRequired": "Il nome è obbligatorio.",
+      "emailRequired": "L'email è obbligatoria.",
+      "invalidEmail": "Email non valida.",
+      "messageRequired": "Il messaggio è obbligatorio.",
+      "messageTooLong": "Messaggio troppo lungo.",
+      "captchaRequired": "Completa il CAPTCHA.",
+      "somethingWentWrong": "Qualcosa è andato storto, prova a contattarmi direttamente via email.",
+      "failedToSend": "Invio fallito."
+    },
+    "footer": {
+      "fullStackDeveloper": "Sviluppatore Web Full Stack",
+      "backToTop": "Torna in cima",
+      "downloadCV": "Scarica il mio CV",
+      "privacyPolicy": "Informativa sulla privacy",
+      "cookiesUsage": "Utilizzo dei cookie",
+      "leaveALike": "Lascia un like!"
+    },
+    "cookie": {
+      "text": "Questo sito web utilizza cookie essenziali.",
+      "confirm": "Conferma"
+    },
+    "notFound": {
+      "title": "404",
+      "subtitle": "Pagina non trovata",
+      "goHome": "Vai alla home"
+    }
+  }
+} 

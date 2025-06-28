@@ -45,6 +45,7 @@
     gap: 3.5rem;
     /* margin-top: 1.5rem; */
     margin: 3rem;
+    flex-wrap: wrap;
 }
 .link {
     color: #eaeaea;
@@ -65,6 +66,41 @@
     font-size: 1.1em;
     margin-left: 0.3em;
     vertical-align: middle;
+}
+
+.languageToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.langBtn {
+    background: none;
+    border: none;
+    color: #eaeaea;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 0.6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.langBtn:hover {
+    opacity: 0.8;
+}
+
+.langBtn.active {
+    opacity: 1;
+    color: var(--blue);
+}
+
+.langSeparator {
+    color: #eaeaea;
+    opacity: 0.6;
+    font-weight: 400;
 }
 
 @media (max-width: 768px) {

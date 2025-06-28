@@ -6,8 +6,9 @@ import github from '../../assets/github.svg';
 import codepen from '../../assets/codepen.svg';
 import linkedin from '../../assets/linkedin.svg';
 import paperclip from '../../assets/paperclip.svg';
+import { useTranslation } from '../../hooks/useTranslation';
 
-const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
+// const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
 export default function Contacts() {
   const [showTransition, setShowTransition] = useState(false);
@@ -18,13 +19,15 @@ export default function Contacts() {
   const [tab, setTab] = useState('Hiring');
   const [attachment, setAttachment] = useState(null);
   const fileInputRef = useRef();
+  // const turnstileRef = useRef();
+  const { t } = useTranslation();
 
-  // Form state
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  // const [turnstileToken, setTurnstileToken] = useState('');
 
   const handleTextareaChange = (e) => {
     const value = e.target.value;
@@ -58,61 +61,84 @@ export default function Contacts() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  // Validation
   const validate = () => {
     const errs = {};
-    if (!form.name.trim()) errs.name = 'Name is required.';
-    if (!form.email.trim()) errs.email = 'Email is required.';
-    else if (!/^\S+@\S+\.\S+$/.test(form.email)) errs.email = 'Invalid email.';
-    if (!form.message.trim()) errs.message = 'Message is required.';
-    if (form.message.length > 500) errs.message = 'Message too long.';
+    if (!form.name.trim()) errs.name = t('contact.nameRequired');
+    if (!form.email.trim()) errs.email = t('contact.emailRequired');
+    else if (!/^\S+@\S+\.\S+$/.test(form.email)) errs.email = t('contact.invalidEmail');
+    if (!form.message.trim()) errs.message = t('contact.messageRequired');
+    if (form.message.length > 500) errs.message = t('contact.messageTooLong');
+    // if (!turnstileToken) errs.turnstile = t('contact.captchaRequired');
     return errs;
   };
 
-  // Submission
+  // const handleTurnstileCallback = (token) => {
+  //   setTurnstileToken(token);
+  //   if (errors.turnstile) {
+  //     setErrors(errs => ({ ...errs, turnstile: undefined }));
+  //   }
+  // };
+
+  // const handleTurnstileExpired = () => {
+  //   setTurnstileToken('');
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
-    setSubmitError('');
-    setSuccess(false);
-    const errs = validate();
-    if (Object.keys(errs).length) {
-      setErrors(errs);
-      return;
-    }
-    setLoading(true);
-    const start = Date.now();
-    try {
-      const formData = new FormData();
-      formData.append('name', form.name);
-      formData.append('email', form.email);
-      formData.append('message', form.message);
-      formData.append('tab', tab);
-      if (attachment) formData.append('attachment', attachment);
-      const res = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to send.');
-      const elapsed = Date.now() - start;
-      if (elapsed < 2000) await new Promise(r => setTimeout(r, 2000 - elapsed));
-      setSuccess(true);
-      setForm({ name: '', email: '', message: '' });
-      setAttachment(null);
-      setCharCount(0);
-    } catch (err) {
-      if (err.name === 'TypeError' || err.message === 'Failed to fetch') {
-        setSubmitError('Something went wrong, try directly emailing me instead.');
-      } else {
-        setSubmitError(err.message || 'Failed to send.');
-      }
-    } finally {
-      setLoading(false);
-    }
+    // Form submission disabled for deployment without backend
+    return;
+    
+    // setErrors({});
+    // setSubmitError('');
+    // setSuccess(false);
+    // const errs = validate();
+    // if (Object.keys(errs).length) {
+    //   setErrors(errs);
+    //   return;
+    // }
+    // setLoading(true);
+    // const start = Date.now();
+    // try {
+    //   const formData = new FormData();
+    //   formData.append('name', form.name);
+    //   formData.append('email', form.email);
+    //   formData.append('message', form.message);
+    //   formData.append('tab', tab);
+    //   formData.append('turnstileToken', turnstileToken);
+    //   if (attachment) formData.append('attachment', attachment);
+    //   const res = await fetch('http://localhost:5000/api/contact', {
+    //     method: 'POST',
+    //     body: formData,
+    //   });
+    //   const data = await res.json();
+    //   if (!res.ok || !data.success) throw new Error(data.error || t('contact.failedToSend'));
+    //   const elapsed = Date.now() - start;
+    //   if (elapsed < 2000) await new Promise(r => setTimeout(r, 2000 - elapsed));
+    //   setSuccess(true);
+    //   setForm({ name: '', email: '', message: '' });
+    //   setAttachment(null);
+    //   setCharCount(0);
+    //   setTurnstileToken('');
+    //   // Reset Turnstile widget
+    //   if (window.turnstile && turnstileRef.current) {
+    //     window.turnstile.reset(turnstileRef.current);
+    //   }
+    // } catch (err) {
+    //   if (err.name === 'TypeError' || err.message === 'Failed to fetch') {
+    //     setSubmitError(t('contact.somethingWentWrong'));
+    //   } else {
+    //     setSubmitError(err.message || t('contact.failedToSend'));
+    //   }
+    //   // Reset Turnstile on error
+    //   if (window.turnstile && turnstileRef.current) {
+    //     window.turnstile.reset(turnstileRef.current);
+    //   }
+    //   setTurnstileToken('');
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
-  // Detect when Contacts section enters the viewport
   useEffect(() => {
     const handleScroll = () => {
       if (triggeredRef.current || !sectionRef.current) return;
@@ -137,18 +163,48 @@ export default function Contacts() {
     return () => clearTimeout(timer);
   }, [showTransition]);
 
+  // Render Turnstile widget when component mounts and script is loaded
+  // useEffect(() => {
+  //   if (!showMain) return;
+    
+  //   const renderTurnstile = () => {
+  //     if (window.turnstile && turnstileRef.current) {
+  //       window.turnstile.render(turnstileRef.current, {
+  //         sitekey: TURNSTILE_SITE_KEY,
+  //         callback: handleTurnstileCallback,
+  //         'expired-callback': handleTurnstileExpired,
+  //       });
+  //     }
+  //   };
+
+  //   // If Turnstile is already loaded
+  //   if (window.turnstile) {
+  //     renderTurnstile();
+  //   } else {
+  //     // Wait for Turnstile to load
+  //     const checkTurnstile = setInterval(() => {
+  //       if (window.turnstile) {
+  //         clearInterval(checkTurnstile);
+  //         renderTurnstile();
+  //       }
+  //     }, 100);
+
+  //     // Cleanup interval after 10 seconds
+  //     setTimeout(() => clearInterval(checkTurnstile), 10000);
+  //   }
+  // }, [showMain]);
+
   return (
     <section className={styles.contacts} ref={sectionRef}>
-      {/* <div className={styles.contactsBg} style={{ backgroundImage: `url(${waves})` }} /> */}
       {showTransition && !showMain && (
         <TransitionOverlay onComplete={() => setShowTransition(false)} />
       )}
       {showMain && (
         <div className={styles.contactsContent}>
           <div className={styles.contactsLeft}>
-            <h2>CONTACT ME</h2>
+            <h2>{t('contact.title')}</h2>
             <div className="bigText">
-              <span className={styles.bigText}>LET'S<br />WORK<br />TOGETHER</span>
+              <span className={styles.bigText}>{t('contact.letsWorkTogether')}</span>
             </div>
             <div className={styles.contactsLeftBottom}>
               <a className={styles.email} href="mailto:rabbanikhandev@gmail.com">rabbanikhandev@gmail.com</a>
@@ -161,28 +217,32 @@ export default function Contacts() {
             </div>
           </div>
           <div className={styles.contactsRight}>
-            <p id={styles.formTitle}>I'm interested in...</p>
+            <p id={styles.formTitle}>{t('contact.interestedIn')}</p>
             <div className={styles.formTabs}>
-              {['Hiring', 'Project', 'Other'].map(t => (
+              {[
+                { key: 'Hiring', label: t('contact.hiring') },
+                { key: 'Project', label: t('contact.project') },
+                { key: 'Other', label: t('contact.other') }
+              ].map(({ key, label }) => (
                 <button
-                  key={t}
-                  className={styles.formTab + (tab === t ? ' ' + styles.active : '')}
-                  onClick={() => setTab(t)}
+                  key={key}
+                  className={styles.formTab + (tab === key ? ' ' + styles.active : '')}
+                  onClick={() => setTab(key)}
                   type="button"
                 >
-                  {t}
+                  {label}
                 </button>
               ))}
             </div>
             <form onSubmit={handleSubmit} aria-live="polite" noValidate>
               <div className={styles.formGroup}>
-                <label htmlFor="contact-name" className={styles.visuallyHidden}>Your name</label>
+                <label htmlFor="contact-name" className={styles.visuallyHidden}>{t('contact.yourName')}</label>
                 <input
                   className={styles.formInput}
                   type="text"
                   id="contact-name"
                   name="name"
-                  placeholder="Your name"
+                  placeholder={t('contact.yourName')}
                   value={form.name}
                   onChange={handleInputChange}
                   required
@@ -192,13 +252,13 @@ export default function Contacts() {
                 {errors.name && <span className={styles.error} id="name-error">{errors.name}</span>}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="contact-email" className={styles.visuallyHidden}>Your email</label>
+                <label htmlFor="contact-email" className={styles.visuallyHidden}>{t('contact.yourEmail')}</label>
                 <input
                   className={styles.formInput}
                   type="email"
                   id="contact-email"
                   name="email"
-                  placeholder="Your email"
+                  placeholder={t('contact.yourEmail')}
                   value={form.email}
                   onChange={handleInputChange}
                   required
@@ -208,12 +268,12 @@ export default function Contacts() {
                 {errors.email && <span className={styles.error} id="email-error">{errors.email}</span>}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="contact-message" className={styles.visuallyHidden}>Your message</label>
+                <label htmlFor="contact-message" className={styles.visuallyHidden}>{t('contact.yourMessage')}</label>
                 <textarea
                   className={styles.formTextarea}
                   id="contact-message"
                   name="message"
-                  placeholder="Your message..."
+                  placeholder={t('contact.yourMessage')}
                   maxLength={500}
                   value={form.message}
                   onChange={handleTextareaChange}
@@ -232,7 +292,7 @@ export default function Contacts() {
                 {!attachment && (
                   <>
                     <img src={paperclip} alt="Attach file" className={styles.paperclipIcon} />
-                    <span className={styles.attachText}>Add attachment</span>
+                    <span className={styles.attachText}>{t('contact.addAttachment')}</span>
                       <input
                         ref={fileInputRef}
                         id="attachment-input"
@@ -250,13 +310,23 @@ export default function Contacts() {
                   </span>
                 )}
               </div>
-              {/* <button className={styles.formSend} type="submit" disabled={loading} aria-busy={loading}>
-                {loading ? <span className={styles.loader}></span> : 'Send message'}
-              </button> */}
+              {/* <div className={styles.formGroup}>
+                <div 
+                  ref={turnstileRef}
+                  className="cf-turnstile"
+                ></div>
+                {errors.turnstile && <span className={styles.error}>{errors.turnstile}</span>}
+              </div> */}
+              
               <button className={styles.formSend} type="button" disabled>
-                Send message
+                {t('contact.sendMessage')}
               </button>
-              {success && <div className={styles.successMsgCentered} role="status">Message sent successfully!</div>}
+              
+              {/* <button className={styles.formSend} type="submit" disabled={loading} aria-busy={loading}>
+                {loading ? <span className={styles.loader}></span> : t('contact.sendMessage')}
+              </button> */}
+              
+              {success && <div className={styles.successMsgCentered} role="status">{t('contact.messageSent')}</div>}
               {submitError && <div className={styles.error} role="alert">{submitError}</div>}
             </form>
           </div>

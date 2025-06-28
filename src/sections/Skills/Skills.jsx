@@ -12,9 +12,11 @@ import css_logo from '../../assets/css_logo.svg'
 import nodejs_logo from '../../assets/nodejs-icon.svg'
 import git_logo from '../../assets/Git-Icon-1788C.svg'
 import { useFadeInOnScroll } from '../../hooks/useFadeInOnScroll'
+import { useTranslation } from '../../hooks/useTranslation'
 
 export default function Skills() {
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
 
   const links = [
     {
@@ -42,27 +44,24 @@ export default function Skills() {
       </div>
 
       <div id={styles.wsCard}>
-          <h1>WORLD SKILLS UK FINALIST</h1>
+          <h1>{t('skills.worldSkillsTitle')}</h1>
           <p>
-          In 2021, I had reached the finals of WorldSkills UK, representing my region Greater Manchester in one of the most prestigious skills competitions in the country. Competing against the best young talent across the UK, I showcased my expertise in Web Design and Development, gaining valuable experience and national recognition.
+          {t('skills.worldSkillsDescription1')}
           </p>
           <p>
-          WorldSkills UK is a member of WorldSkills, a global movement of over 80 countries.<br />
-WorldSkills supports young people across the world via competitions-based training, <br />
-assessment and benchmarking, with members' national teams ultimately testing their <br />
-ability to achieve world-class standards in the biennial 'skills olympics'.
+          {t('skills.worldSkillsDescription2')}
           </p>
           <button id={styles.readMore} onClick={() => setShowModal(true)}>
-            READ MORE
+            {t('skills.readMore')}
           </button>
           <h1 id={styles.highestScore}>
-            <span>HIGHEST SCORE IN THE</span>
-            <span className={styles.northWest}>NORTH WEST</span>
+            <span>{t('skills.highestScore')}</span>
+            <span className={styles.northWest}>{t('skills.northWest')}</span>
           </h1>
       </div>
 
       <div className={styles.header}>
-          <h1>Skills & Tools</h1>
+          <h1>{t('skills.title')}</h1>
       </div>
 
       <div id={styles.skillsGrid}>
@@ -90,7 +89,7 @@ ability to achieve world-class standards in the biennial 'skills olympics'.
       {showModal && (
         <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
           <div className={styles.modal} onClick={e => e.stopPropagation()}>
-            <h2>Related Links</h2>
+            <h2>{t('skills.relatedLinks')}</h2>
             <ul>
               {links.map(link => (
                 <li key={link.url}>
@@ -98,7 +97,7 @@ ability to achieve world-class standards in the biennial 'skills olympics'.
                 </li>
               ))}
             </ul>
-            <button onClick={() => setShowModal(false)}>Close</button>
+            <button onClick={() => setShowModal(false)}>{t('skills.close')}</button>
           </div>
         </div>
       )}

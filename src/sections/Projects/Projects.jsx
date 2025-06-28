@@ -4,6 +4,7 @@ import Blob from '../../components/Blob/Blob'
 import github_logo from '../../assets/github_logo.png'
 import project_1 from '../../assets/project_proxy.png'
 import { useFadeInOnScroll } from '../../hooks/useFadeInOnScroll'
+import { useTranslation } from '../../hooks/useTranslation'
 // Add more project images as needed
 
 const projects = [
@@ -30,6 +31,8 @@ const projects = [
 ];
 
 export default function Projects() {
+  const { t } = useTranslation();
+  
   return (
     <section className={styles.projects}>
       <Blob color="var(--red)" width={600} height={600} left={"35%"} top={"20%"} opacity={.7} blur={120} rotationSpeed={30000} morphSpeed={20000} movementSpeed={50000} />
@@ -38,7 +41,7 @@ export default function Projects() {
           <img src={github_logo} alt="logo" />
         </a>
         <div className={styles.divider}></div>
-        <h1>Projects</h1>
+        <h1>{t('projects.title')}</h1>
       </div>
       <div className={styles.projects_container}>
         {projects.map((project, idx) => {
@@ -58,7 +61,7 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className={styles.github_link}
                 >
-                  View on GitHub
+                  {t('projects.viewOnGitHub')}
                 </a>
               </div>
             </div>

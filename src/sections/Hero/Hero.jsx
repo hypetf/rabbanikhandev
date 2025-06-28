@@ -4,10 +4,13 @@ import hero_image from '/profilepic2.jpg'
 import Blob from '../../components/Blob/Blob'
 import cv_pdf from '../../assets/Rabbani Khan - Curriculum Vitae2025.pdf'
 import { useFadeInOnScroll } from '../../hooks/useFadeInOnScroll'
+import { useTranslation } from '../../hooks/useTranslation'
 
 export default function Hero() {
   const [refLeft, visibleLeft] = useFadeInOnScroll();
   const [refRight, visibleRight] = useFadeInOnScroll();
+  const { t } = useTranslation();
+  
   return (
     <section className={styles.hero} style={{ position: 'relative' }}>
       <Blob color="var(--blue)" width={600} height={350} left={150} top={100} opacity={.7} blur={60} rotationSpeed={30000} morphSpeed={20000} movementSpeed={10000} />
@@ -20,17 +23,15 @@ export default function Hero() {
         </div>
         <div ref={refRight} className={`fade-in-up${visibleRight ? ' visible' : ''} ${styles.hero_content_right}`}>
           <h1>
-            RABBANI KHAN
+            {t('hero.title')}
           </h1>
-          <h3>Full Stack Developer</h3>
+          <h3>{t('hero.subtitle')}</h3>
           <p>
-            I am a Web & Software Developer located in Manchester, currently a
-            full-time student pursuing Computer Science Bachelor's degree program at
-            Manchester Metropolitan University where I am enhancing my knowledge in the field.
+            {t('hero.description1')}
           </p>
-          <p>One of my greatest achievement is being a finalist in the national competition WorldSkills UK in Web Design & Development.</p>
+          <p>{t('hero.description2')}</p>
           <div className={styles.hero_content_right_buttons}>
-            <a href={cv_pdf} target="_blank" rel="noopener noreferrer" className={styles.download_cv_button}>Download my CV</a>
+            <a href={cv_pdf} target="_blank" rel="noopener noreferrer" className={styles.download_cv_button}>{t('hero.downloadCV')}</a>
             <a
               href="#skills"
               onClick={e => {
@@ -38,12 +39,12 @@ export default function Hero() {
                 document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Explore more
+              {t('hero.exploreMore')}
             </a>
           </div>
         </div>
       </div>
-      <p className={styles.scroll_to_view}>Scroll to view more</p>
+      <p className={styles.scroll_to_view}>{t('hero.scrollToView')}</p>
     </section>
   )
 }

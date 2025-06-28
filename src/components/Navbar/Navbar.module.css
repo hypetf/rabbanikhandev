@@ -25,6 +25,7 @@
 .navbar_links {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .navbar_links a {
@@ -147,6 +148,37 @@
   .overlay_nav a.active {
     color: var(--blue);
     opacity: 1;
+  }
+  .mobileLanguageToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .mobileLangBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 0.6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  .mobileLangBtn:hover {
+    opacity: 0.8;
+  }
+  .mobileLangBtn.active {
+    opacity: 1;
+    color: var(--blue);
+  }
+  .mobileLangSeparator {
+    color: #fff;
+    opacity: 0.6;
+    font-weight: 400;
+    font-size: 1.5rem;
   }
   .navbar_content {
     width: 100%;
