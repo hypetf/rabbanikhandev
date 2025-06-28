@@ -7,6 +7,8 @@ import codepen from '../../assets/codepen.svg';
 import linkedin from '../../assets/linkedin.svg';
 import paperclip from '../../assets/paperclip.svg';
 
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
+
 export default function Contacts() {
   const [showTransition, setShowTransition] = useState(false);
   const [showMain, setShowMain] = useState(false);
@@ -17,9 +19,27 @@ export default function Contacts() {
   const [attachment, setAttachment] = useState(null);
   const fileInputRef = useRef();
 
+  // Form state
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
   const handleTextareaChange = (e) => {
     const value = e.target.value;
     setCharCount(value.length);
+    setForm(f => ({ ...f, message: value }));
+    if (errors.message) {
+      setErrors(errs => ({ ...errs, message: undefined }));
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+    if (errors[e.target.name]) {
+      setErrors(errs => ({ ...errs, [e.target.name]: undefined }));
+    }
   };
 
   const handleAttachmentChange = (e) => {
@@ -36,6 +56,60 @@ export default function Contacts() {
     e.stopPropagation();
     setAttachment(null);
     if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  // Validation
+  const validate = () => {
+    const errs = {};
+    if (!form.name.trim()) errs.name = 'Name is required.';
+    if (!form.email.trim()) errs.email = 'Email is required.';
+    else if (!/^\S+@\S+\.\S+$/.test(form.email)) errs.email = 'Invalid email.';
+    if (!form.message.trim()) errs.message = 'Message is required.';
+    if (form.message.length > 500) errs.message = 'Message too long.';
+    return errs;
+  };
+
+  // Submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({});
+    setSubmitError('');
+    setSuccess(false);
+    const errs = validate();
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
+    }
+    setLoading(true);
+    const start = Date.now();
+    try {
+      const formData = new FormData();
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('message', form.message);
+      formData.append('tab', tab);
+      if (attachment) formData.append('attachment', attachment);
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to send.');
+      const elapsed = Date.now() - start;
+      if (elapsed < 2000) await new Promise(r => setTimeout(r, 2000 - elapsed));
+      setSuccess(true);
+      setForm({ name: '', email: '', message: '' });
+      setAttachment(null);
+      setCharCount(0);
+    } catch (err) {
+      if (err.name === 'TypeError' || err.message === 'Failed to fetch') {
+        setSubmitError('Something went wrong, try directly emailing me instead.');
+      } else {
+        setSubmitError(err.message || 'Failed to send.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Detect when Contacts section enters the viewport
@@ -100,16 +174,55 @@ export default function Contacts() {
                 </button>
               ))}
             </div>
-            <form>
+            <form onSubmit={handleSubmit} aria-live="polite" noValidate>
               <div className={styles.formGroup}>
-                <input className={styles.formInput} type="text" placeholder="Your name" required />
+                <label htmlFor="contact-name" className={styles.visuallyHidden}>Your name</label>
+                <input
+                  className={styles.formInput}
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Your name"
+                  value={form.name}
+                  onChange={handleInputChange}
+                  required
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
+                />
+                {errors.name && <span className={styles.error} id="name-error">{errors.name}</span>}
               </div>
               <div className={styles.formGroup}>
-                <input className={styles.formInput} type="email" placeholder="Your email" required />
+                <label htmlFor="contact-email" className={styles.visuallyHidden}>Your email</label>
+                <input
+                  className={styles.formInput}
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="Your email"
+                  value={form.email}
+                  onChange={handleInputChange}
+                  required
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                />
+                {errors.email && <span className={styles.error} id="email-error">{errors.email}</span>}
               </div>
               <div className={styles.formGroup}>
-                <textarea className={styles.formTextarea} placeholder="Your message..." maxLength={500} onChange={handleTextareaChange} required />
+                <label htmlFor="contact-message" className={styles.visuallyHidden}>Your message</label>
+                <textarea
+                  className={styles.formTextarea}
+                  id="contact-message"
+                  name="message"
+                  placeholder="Your message..."
+                  maxLength={500}
+                  value={form.message}
+                  onChange={handleTextareaChange}
+                  required
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
+                />
                 <span className={styles.charCount}>{charCount}/500</span>
+                {errors.message && <span className={styles.error} id="message-error">{errors.message}</span>}
               </div>
               <div
                 className={styles.formAttach + (attachment ? ' ' + styles.attachmentSelected : '')}
@@ -137,7 +250,14 @@ export default function Contacts() {
                   </span>
                 )}
               </div>
-              <button className={styles.formSend} type="button">Send message</button>
+              {/* <button className={styles.formSend} type="submit" disabled={loading} aria-busy={loading}>
+                {loading ? <span className={styles.loader}></span> : 'Send message'}
+              </button> */}
+              <button className={styles.formSend} type="button" disabled>
+                Send message
+              </button>
+              {success && <div className={styles.successMsgCentered} role="status">Message sent successfully!</div>}
+              {submitError && <div className={styles.error} role="alert">{submitError}</div>}
             </form>
           </div>
           <div className={styles.mobileContactInfo}>

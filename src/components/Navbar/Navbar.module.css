@@ -36,6 +36,10 @@
     opacity: 1;
 }
 
+.navbar_links a.active {
+    opacity: 1;
+}
+
 @media (max-width: 768px) {
   .navbar {
     transform: translateY(0) !important;
@@ -120,7 +124,7 @@
     z-index: 2000 !important;
   }
   .close_button:hover {
-    color: #7ecbff;
+    color: var(--blue);
   }
   .overlay_nav {
     display: flex;
@@ -137,7 +141,11 @@
     transition: color 0.2s, opacity 0.2s;
   }
   .overlay_nav a:hover {
-    color: #7ecbff;
+    color: var(--blue);
+    opacity: 1;
+  }
+  .overlay_nav a.active {
+    color: var(--blue);
     opacity: 1;
   }
   .navbar_content {

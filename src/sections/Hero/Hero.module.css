@@ -99,6 +99,19 @@ p {
     width: 100%;
     text-align: center;
     opacity: .6;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.3;
+    }
 }
 
 @media (max-width: 768px) {
@@ -131,11 +144,19 @@ p {
     width: 100%;
     box-sizing: border-box;
   }
+
+  .hero_content_right h3 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+
   p {
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-align: justify;
   }
+
   .scroll_to_view {
     font-size: 0.95rem;
     bottom: 2%;

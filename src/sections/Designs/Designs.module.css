@@ -76,11 +76,16 @@
 }
 
 .designs_image {
-    transform: perspective(800px) rotateX(8deg) rotateY(16deg);
     max-width: 100%;
     max-height: 50vh;
     height: auto;
     width: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.designs_image:hover {
+    transform: scale(1.02);
 }
 
 .designs_image.fade {
@@ -102,6 +107,139 @@
     transition: width 0.1s linear;
     border-radius: 2px;
     width: 0%;
+}
+
+/* Fullscreen Overlay Styles */
+.fullscreenOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    padding: 1rem;
+}
+
+.fullscreenContent {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: scaleIn 0.3s ease;
+}
+
+.imageContainer {
+    position: relative;
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: visible;
+    border-radius: 8px;
+    background: transparent;
+}
+
+.fullscreenImage {
+    max-width: 100%;
+    max-height: 80vh;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease;
+    transform-origin: center center;
+}
+
+.fullscreenTitle {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top: 0.8rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.closeButton {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+    color: var(--yellow);
+}
+
+.zoomControls {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    display: flex;
+    gap: 0.3rem;
+    z-index: 1001;
+}
+
+.zoomControls button {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.zoomControls button:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: var(--yellow);
+}
+
+.zoomControls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.zoomControls button:nth-child(2) {
+    min-width: 50px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @media (max-width: 768px) {
@@ -177,5 +315,18 @@
   }
   .progressBarWrapper {
     width: 30%;
+  }
+  .imageContainer {
+    max-height: 70vh;
+  }
+  .closeButton {
+    top: -40px;
+    right: 0;
+    font-size: 2.5rem;
+    width: 40px;
+    height: 40px;
+  }
+  .zoomControls {
+    display: none;
   }
 }

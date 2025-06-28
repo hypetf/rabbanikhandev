@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-/* .app::after {
+.app::after {
   content: '';
   position: fixed;
   top: 0;
@@ -22,7 +22,7 @@
   background: url('/src/assets/noise.png') repeat;
   background-size: cover;
   opacity: .6;
-} */
+}
 
 section {
   /* padding: 2rem 4rem; */

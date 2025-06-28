@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo_light from '/logo_light.png'
 
 import styles from './Navbar.module.css'
@@ -7,8 +8,14 @@ export default function Navbar() {
   const [visible, setVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
   const lastScrollY = useRef(0);
   const lastHideY = useRef(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // If not on home, no active section
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +39,55 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [visible]);
+
+  // Scroll spy effect to detect active section
+  useEffect(() => {
+    if (!isHome) {
+      setActiveSection(null);
+      return;
+    }
+    const handleScrollSpy = () => {
+      const sections = ['about', 'designs', 'projects', 'skills', 'contact'];
+      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScrollSpy);
+    handleScrollSpy(); // Check on initial load
+    return () => window.removeEventListener('scroll', handleScrollSpy);
+  }, [isHome]);
+
+  // Smooth scroll function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Handle nav click: if not on home, navigate to home and scroll after navigation
+  const handleNavClick = (sectionId) => (e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    if (!isHome) {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      scrollToSection(sectionId);
+    }
+  };
+
+  // Scroll to section if coming from another route
+  useEffect(() => {
+    if (isHome && window.history.state && window.history.state.usr && window.history.state.usr.scrollTo) {
+      const sectionId = window.history.state.usr.scrollTo;
+      setTimeout(() => scrollToSection(sectionId), 100);
+    }
+  }, [isHome]);
 
   // Prevent background scroll when menu is open
   useEffect(() => {
@@ -64,10 +120,41 @@ export default function Navbar() {
             </a>
           </div>
           <div className={styles.navbar_links}>
-            <a href="#">About me</a>
-            <a href="#">My Projects</a>
-            <a href="#">My Skills</a>
-            <a href="#">Contact me</a>
+            <a 
+              href="#about" 
+              onClick={handleNavClick('about')}
+              className={activeSection === 'about' ? styles.active : ''}
+            >
+              About me
+            </a>
+            <a 
+              href="#designs" 
+              onClick={handleNavClick('designs')}
+              className={activeSection === 'designs' ? styles.active : ''}
+            >
+              My Designs
+            </a>
+            <a 
+              href="#projects" 
+              onClick={handleNavClick('projects')}
+              className={activeSection === 'projects' ? styles.active : ''}
+            >
+              My Projects
+            </a>
+            <a 
+              href="#skills" 
+              onClick={handleNavClick('skills')}
+              className={activeSection === 'skills' ? styles.active : ''}
+            >
+              My Skills
+            </a>
+            <a 
+              href="#contact" 
+              onClick={handleNavClick('contact')}
+              className={activeSection === 'contact' ? styles.active : ''}
+            >
+              Contact me
+            </a>
           </div>
           <button
             className={styles.hamburger}
@@ -95,10 +182,55 @@ export default function Navbar() {
             &times;
           </button>
           <nav className={styles.overlay_nav} onClick={e => e.stopPropagation()}>
-            <a href="#" onClick={() => setMenuOpen(false)}>About me</a>
-            <a href="#" onClick={() => setMenuOpen(false)}>My Projects</a>
-            <a href="#" onClick={() => setMenuOpen(false)}>My Skills</a>
-            <a href="#" onClick={() => setMenuOpen(false)}>Contact me</a>
+            <a 
+              href="#about" 
+              onClick={handleNavClick('about')}
+              className={activeSection === 'about' ? styles.active : ''}
+            >
+              About me
+            </a>
+            <a 
+              href="#designs" 
+              onClick={handleNavClick('designs')}
+              className={activeSection === 'designs' ? styles.active : ''}
+            >
+              My Designs
+            </a>
+            <a 
+              href="#projects" 
+              onClick={handleNavClick('projects')}
+              className={activeSection === 'projects' ? styles.active : ''}
+            >
+              My Projects
+            </a>
+            <a 
+              href="#skills" 
+              onClick={handleNavClick('skills')}
+              className={activeSection === 'skills' ? styles.active : ''}
+            >
+              My Skills
+            </a>
+            <a 
+              href="#contact" 
+              onClick={handleNavClick('contact')}
+              className={activeSection === 'contact' ? styles.active : ''}
+            >
+              Contact me
+            </a>
+            <a 
+              href="#" 
+              onClick={() => setMenuOpen(false)}
+              style={{marginTop: '2rem', fontSize: '1rem', opacity: 0.7}}
+            >
+              Cookie usage
+            </a>
+            <a 
+              href="#" 
+              onClick={() => setMenuOpen(false)}
+              style={{fontSize: '1rem', opacity: 0.7}}
+            >
+              Privacy policy
+            </a>
           </nav>
         </div>
       )}

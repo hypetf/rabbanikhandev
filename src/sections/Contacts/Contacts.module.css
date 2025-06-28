@@ -302,6 +302,26 @@ form {
         flex: none;
         width: 100%;
     }
+
+    .mobileContactInfo .email {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Make send button full width on mobile */
+    .formSend {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    /* Style attachment button for mobile */
+    .formAttach {
+        width: 100%;
+        border: 1px solid #444;
+        padding: 0.7rem 1rem;
+        justify-content: center;
+    }
 }
 
 /* Create a new section below form for contact info */
@@ -315,16 +335,18 @@ form {
 }
 
 .mobileContactInfo .email {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 300;
     color: #fff;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
+    display: block;
+    width: 100%;
 }
 
 .mobileContactInfo .socials {
     display: flex;
-    gap: 1.2rem;
+    gap: 5rem;
     align-items: center;
     justify-content: center;
 }
@@ -346,4 +368,29 @@ form {
     height: 20px;
     vertical-align: middle;
     display: inline-block;
+}
+
+.loader {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2.5px solid #fff;
+  border-top: 2.5px solid #3fa7ff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.successMsgCentered {
+  margin: 2rem auto 0 auto;
+  text-align: center;
+  color: var(--blue);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
 }
