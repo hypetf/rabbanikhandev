@@ -103,7 +103,7 @@ export default function Contacts() {
       formData.append('tab', tab);
       formData.append('turnstileToken', turnstileToken);
       if (attachment) formData.append('attachment', attachment);
-      const res = await fetch('https://rabbanikhandev-server.onrender.com/api/contact', {
+      const res = await fetch('https://numerous-dulci-hypetf-b9146aa8.koyeb.app/api/contact', {
         method: 'POST',
         body: formData,
       });
