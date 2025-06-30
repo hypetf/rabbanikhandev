@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './Footer.module.css'
 import logo from '../../assets/logo.svg'
-import cv from '../../assets/Rabbani Khan - Curriculum Vitae2025.pdf'
 import { useTranslation } from '../../hooks/useTranslation'
 import { Link } from 'react-router-dom'
 
@@ -20,7 +19,7 @@ export default function Footer() {
       </div>
       <div className={styles.linksRow}>
         <a href="#top" className={styles.link}>{t('footer.backToTop')}</a>
-        <a href={cv} className={styles.link} target="_blank" rel="noopener noreferrer">{t('footer.downloadCV')}</a>
+        <a href="/cv.pdf" className={styles.link} target="_blank" rel="noopener noreferrer">{t('footer.downloadCV')}</a>
         <Link to="/privacy" className={styles.link}>{t('footer.privacyPolicy')}</Link>
         <Link to="/privacy" className={styles.link}>{t('footer.cookiesUsage')}</Link>
         {/* <a href="#" className={styles.link}>
