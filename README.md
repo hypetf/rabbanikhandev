@@ -1,3 +1,14 @@
+# hypetf.dev Portfolio Frontend
+
+This is the frontend for the portfolio website [hypetf.dev](https://hypetf.dev), built with ReactJS, Vite, and modern web technologies.
+
+- **Framework:** ReactJS
+- **Build Tool:** Vite
+- **Styling:** CSS Modules
+- **Routing:** React Router
+
+This project showcases the developer's work, skills, and contact information.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
