@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hypetf.dev/sitemap.xml
+
+# Crawl delay (optional - tells crawlers to wait between requests)
+Crawl-delay: 1 
