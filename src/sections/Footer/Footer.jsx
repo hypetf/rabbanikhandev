@@ -22,9 +22,9 @@ export default function Footer() {
         <a href={cv} className={styles.link} target="_blank" rel="noopener noreferrer">{t('footer.downloadCV')}</a>
         <a href="#" className={styles.link}>{t('footer.privacyPolicy')}</a>
         <a href="#" className={styles.link}>{t('footer.cookiesUsage')}</a>
-        <a href="#" className={styles.link}>
+        {/* <a href="#" className={styles.link}>
           {t('footer.leaveALike')} <span className={styles.heart}>❤️</span>
-        </a>
+        </a> */}
         <div className={styles.languageToggle}>
           <button
             className={`${styles.langBtn} ${language === 'en' ? styles.active : ''}`}

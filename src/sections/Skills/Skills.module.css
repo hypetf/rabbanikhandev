@@ -1,5 +1,5 @@
 .skills {
-    /* min-height: 200vh; */
+    min-height: 150vh;
     /* height: auto; */
     display: flex;
     flex-direction: column;
@@ -241,6 +241,7 @@
     overflow-x: hidden;
     width: 100vw;
     box-sizing: border-box;
+    min-height: 130vh;
   }
   #bg {
     height: auto;

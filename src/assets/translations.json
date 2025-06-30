@@ -26,7 +26,7 @@
     },
     "projects": {
       "title": "Projects",
-      "viewOnGitHub": "View on GitHub"
+      "viewOnGitHub": "View Project"
     },
     "skills": {
       "title": "Skills & Tools",
@@ -106,7 +106,7 @@
     },
     "projects": {
       "title": "Progetti",
-      "viewOnGitHub": "Vedi su GitHub"
+      "viewOnGitHub": "Vedi Progetto"
     },
     "skills": {
       "title": "Competenze e Strumenti",

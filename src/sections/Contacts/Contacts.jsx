@@ -8,7 +8,7 @@ import linkedin from '../../assets/linkedin.svg';
 import paperclip from '../../assets/paperclip.svg';
 import { useTranslation } from '../../hooks/useTranslation';
 
-// const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
 export default function Contacts() {
   const [showTransition, setShowTransition] = useState(false);
@@ -19,7 +19,7 @@ export default function Contacts() {
   const [tab, setTab] = useState('Hiring');
   const [attachment, setAttachment] = useState(null);
   const fileInputRef = useRef();
-  // const turnstileRef = useRef();
+  const turnstileRef = useRef();
   const { t } = useTranslation();
 
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -27,7 +27,7 @@ export default function Contacts() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  // const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
 
   const handleTextareaChange = (e) => {
     const value = e.target.value;
@@ -68,75 +68,72 @@ export default function Contacts() {
     else if (!/^\S+@\S+\.\S+$/.test(form.email)) errs.email = t('contact.invalidEmail');
     if (!form.message.trim()) errs.message = t('contact.messageRequired');
     if (form.message.length > 500) errs.message = t('contact.messageTooLong');
-    // if (!turnstileToken) errs.turnstile = t('contact.captchaRequired');
+    if (!turnstileToken) errs.turnstile = t('contact.captchaRequired');
     return errs;
   };
 
-  // const handleTurnstileCallback = (token) => {
-  //   setTurnstileToken(token);
-  //   if (errors.turnstile) {
-  //     setErrors(errs => ({ ...errs, turnstile: undefined }));
-  //   }
-  // };
+  const handleTurnstileCallback = (token) => {
+    setTurnstileToken(token);
+    if (errors.turnstile) {
+      setErrors(errs => ({ ...errs, turnstile: undefined }));
+    }
+  };
 
-  // const handleTurnstileExpired = () => {
-  //   setTurnstileToken('');
-  // };
+  const handleTurnstileExpired = () => {
+    setTurnstileToken('');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission disabled for deployment without backend
-    return;
-    
-    // setErrors({});
-    // setSubmitError('');
-    // setSuccess(false);
-    // const errs = validate();
-    // if (Object.keys(errs).length) {
-    //   setErrors(errs);
-    //   return;
-    // }
-    // setLoading(true);
-    // const start = Date.now();
-    // try {
-    //   const formData = new FormData();
-    //   formData.append('name', form.name);
-    //   formData.append('email', form.email);
-    //   formData.append('message', form.message);
-    //   formData.append('tab', tab);
-    //   formData.append('turnstileToken', turnstileToken);
-    //   if (attachment) formData.append('attachment', attachment);
-    //   const res = await fetch('http://localhost:5000/api/contact', {
-    //     method: 'POST',
-    //     body: formData,
-    //   });
-    //   const data = await res.json();
-    //   if (!res.ok || !data.success) throw new Error(data.error || t('contact.failedToSend'));
-    //   const elapsed = Date.now() - start;
-    //   if (elapsed < 2000) await new Promise(r => setTimeout(r, 2000 - elapsed));
-    //   setSuccess(true);
-    //   setForm({ name: '', email: '', message: '' });
-    //   setAttachment(null);
-    //   setCharCount(0);
-    //   setTurnstileToken('');
-    //   // Reset Turnstile widget
-    //   if (window.turnstile && turnstileRef.current) {
-    //     window.turnstile.reset(turnstileRef.current);
-    //   }
-    // } catch (err) {
-    //   if (err.name === 'TypeError' || err.message === 'Failed to fetch') {
-    //     setSubmitError(t('contact.somethingWentWrong'));
-    //   } else {
-    //     setSubmitError(err.message || t('contact.failedToSend'));
-    //   }
-    //   // Reset Turnstile on error
-    //   if (window.turnstile && turnstileRef.current) {
-    //     window.turnstile.reset(turnstileRef.current);
-    //   }
-    //   setTurnstileToken('');
-    // } finally {
-    //   setLoading(false);
-    // }
+    setErrors({});
+    setSubmitError('');
+    setSuccess(false);
+    const errs = validate();
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
+    }
+    setLoading(true);
+    const start = Date.now();
+    try {
+      const formData = new FormData();
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('message', form.message);
+      formData.append('tab', tab);
+      formData.append('turnstileToken', turnstileToken);
+      if (attachment) formData.append('attachment', attachment);
+      const res = await fetch('https://rabbanikhandev-server.onrender.com/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || t('contact.failedToSend'));
+      const elapsed = Date.now() - start;
+      if (elapsed < 2000) await new Promise(r => setTimeout(r, 2000 - elapsed));
+      setSuccess(true);
+      setForm({ name: '', email: '', message: '' });
+      setAttachment(null);
+      setCharCount(0);
+      setTurnstileToken('');
+      // Reset Turnstile widget
+      if (window.turnstile && turnstileRef.current) {
+        window.turnstile.reset(turnstileRef.current);
+      }
+    } catch (err) {
+      if (err.name === 'TypeError' || err.message === 'Failed to fetch') {
+        setSubmitError(t('contact.somethingWentWrong'));
+      } else {
+        setSubmitError(err.message || t('contact.failedToSend'));
+      }
+      // Reset Turnstile on error
+      if (window.turnstile && turnstileRef.current) {
+        window.turnstile.reset(turnstileRef.current);
+      }
+      setTurnstileToken('');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -163,36 +160,29 @@ export default function Contacts() {
     return () => clearTimeout(timer);
   }, [showTransition]);
 
-  // Render Turnstile widget when component mounts and script is loaded
-  // useEffect(() => {
-  //   if (!showMain) return;
-    
-  //   const renderTurnstile = () => {
-  //     if (window.turnstile && turnstileRef.current) {
-  //       window.turnstile.render(turnstileRef.current, {
-  //         sitekey: TURNSTILE_SITE_KEY,
-  //         callback: handleTurnstileCallback,
-  //         'expired-callback': handleTurnstileExpired,
-  //       });
-  //     }
-  //   };
-
-  //   // If Turnstile is already loaded
-  //   if (window.turnstile) {
-  //     renderTurnstile();
-  //   } else {
-  //     // Wait for Turnstile to load
-  //     const checkTurnstile = setInterval(() => {
-  //       if (window.turnstile) {
-  //         clearInterval(checkTurnstile);
-  //         renderTurnstile();
-  //       }
-  //     }, 100);
-
-  //     // Cleanup interval after 10 seconds
-  //     setTimeout(() => clearInterval(checkTurnstile), 10000);
-  //   }
-  // }, [showMain]);
+  useEffect(() => {
+    if (!showMain) return;
+    const renderTurnstile = () => {
+      if (window.turnstile && turnstileRef.current) {
+        window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: handleTurnstileCallback,
+          'expired-callback': handleTurnstileExpired,
+        });
+      }
+    };
+    if (window.turnstile) {
+      renderTurnstile();
+    } else {
+      const checkTurnstile = setInterval(() => {
+        if (window.turnstile) {
+          clearInterval(checkTurnstile);
+          renderTurnstile();
+        }
+      }, 100);
+      setTimeout(() => clearInterval(checkTurnstile), 10000);
+    }
+  }, [showMain]);
 
   return (
     <section className={styles.contacts} ref={sectionRef}>
@@ -310,21 +300,17 @@ export default function Contacts() {
                   </span>
                 )}
               </div>
-              {/* <div className={styles.formGroup}>
+              <div className={styles.formGroup}>
                 <div 
                   ref={turnstileRef}
                   className="cf-turnstile"
                 ></div>
                 {errors.turnstile && <span className={styles.error}>{errors.turnstile}</span>}
-              </div> */}
+              </div>
               
-              <button className={styles.formSend} type="button" disabled>
-                {t('contact.sendMessage')}
-              </button>
-              
-              {/* <button className={styles.formSend} type="submit" disabled={loading} aria-busy={loading}>
+              <button className={styles.formSend} type="submit" disabled={loading} aria-busy={loading}>
                 {loading ? <span className={styles.loader}></span> : t('contact.sendMessage')}
-              </button> */}
+              </button>
               
               {success && <div className={styles.successMsgCentered} role="status">{t('contact.messageSent')}</div>}
               {submitError && <div className={styles.error} role="alert">{submitError}</div>}
