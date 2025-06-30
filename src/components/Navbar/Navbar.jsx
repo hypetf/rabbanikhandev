@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import logo_light from '/logo_light.png'
 import { useTranslation } from '../../hooks/useTranslation'
 
@@ -244,20 +244,20 @@ export default function Navbar() {
                 ITA
               </button>
             </div>
-            <a 
-              href="#" 
+            <Link 
+              to="/privacy" 
               onClick={() => setMenuOpen(false)}
               style={{marginTop: '2rem', fontSize: '1rem', opacity: 0.7}}
             >
               {t('nav.cookieUsage')}
-            </a>
-            <a 
-              href="#" 
+            </Link>
+            <Link 
+              to="/privacy" 
               onClick={() => setMenuOpen(false)}
               style={{fontSize: '1rem', opacity: 0.7}}
             >
               {t('nav.privacyPolicy')}
-            </a>
+            </Link>
           </nav>
         </div>
       )}

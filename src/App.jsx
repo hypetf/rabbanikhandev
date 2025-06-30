@@ -10,6 +10,7 @@ import Contacts from './sections/Contacts/Contacts'
 import Footer from './sections/Footer/Footer'
 import CookieNotification from './components/CookieNotification/CookieNotification'
 import NotFound from './components/NotFound/NotFound'
+import Privacy from './components/Privacy/Privacy'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Footer />
             </div>
           } />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

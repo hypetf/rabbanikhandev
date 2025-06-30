@@ -77,6 +77,36 @@
       "title": "404",
       "subtitle": "Page Not Found",
       "goHome": "Go Home"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "effectiveDate": "Effective date: 30 June 2025",
+      "intro": "This website (https://hypetf.dev) is committed to protecting your privacy. This Privacy Policy explains how your information is collected, used, and safeguarded when you visit this website.",
+      "infoTitle": "Information We Collect",
+      "infoList": [
+        "We do not collect personal information unless you voluntarily provide it via the contact form or email.",
+        "No account registration or login is required to use this website."
+      ],
+      "useTitle": "How We Use Your Information",
+      "useList": [
+        "Any information you provide is used solely to respond to your inquiry or request.",
+        "We do not share, sell, or rent your information to third parties."
+      ],
+      "cookiesTitle": "Cookies Policy",
+      "cookiesIntro": "This website uses only essential cookies to ensure basic functionality, such as:",
+      "cookiesList": [
+        "Remembering your language preference.",
+        "Saving your cookie consent choice."
+      ],
+      "cookiesNote": "No tracking, analytics, or advertising cookies are used.",
+      "rightsTitle": "Your Rights",
+      "rightsList": [
+        "You may request access to or deletion of any personal data you have provided by contacting us via the contact form."
+      ],
+      "contactTitle": "Contact",
+      "contactText": "For any privacy-related questions or requests, please use the contact form available on this website.",
+      "changesTitle": "Changes to This Policy",
+      "changesText": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date."
     }
   },
   "it": {
@@ -157,6 +187,36 @@
       "title": "404",
       "subtitle": "Pagina non trovata",
       "goHome": "Vai alla home"
+    },
+    "privacy": {
+      "title": "Informativa sulla Privacy",
+      "effectiveDate": "Data di entrata in vigore: 30 Giugno 2025",
+      "intro": "Questo Sito web (https://hypetf.dev) si impegna a proteggere la tua privacy. Questa informativa spiega come vengono raccolte, utilizzate e protette le tue informazioni quando visiti il Sito.",
+      "infoTitle": "Informazioni che raccogliamo",
+      "infoList": [
+        "Non raccogliamo informazioni personali a meno che tu non le fornisca volontariamente tramite il modulo di contatto o email.",
+        "Non è richiesta alcuna registrazione o login per utilizzare il Sito."
+      ],
+      "useTitle": "Come utilizziamo le tue informazioni",
+      "useList": [
+        "Qualsiasi informazione fornita viene utilizzata esclusivamente per rispondere alla tua richiesta o domanda.",
+        "Non condividiamo, vendiamo o affittiamo le tue informazioni a terzi."
+      ],
+      "cookiesTitle": "Politica sui Cookie",
+      "cookiesIntro": "Questo Sito utilizza solo cookie essenziali per garantire le funzionalità di base, come:",
+      "cookiesList": [
+        "Memorizzare la tua preferenza di lingua.",
+        "Salvare la tua scelta relativa ai cookie."
+      ],
+      "cookiesNote": "Non vengono utilizzati cookie di tracciamento, analisi o pubblicità.",
+      "rightsTitle": "I tuoi diritti",
+      "rightsList": [
+        "Puoi richiedere l'accesso o la cancellazione di qualsiasi dato personale fornito contattandoci tramite il modulo di contatto."
+      ],
+      "contactTitle": "Contatti",
+      "contactText": "Per qualsiasi domanda o richiesta relativa alla privacy, utilizza il modulo di contatto presente sul Sito.",
+      "changesTitle": "Modifiche a questa informativa",
+      "changesText": "Questa informativa può essere aggiornata periodicamente. Eventuali modifiche saranno pubblicate su questa pagina con la data di entrata in vigore aggiornata."
     }
   }
 } 

@@ -1,0 +1,59 @@
+.privacyContainer {
+  /* max-width: 800px; */
+  margin: 40px auto;
+  padding: 2rem 3rem;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  color: var(--text, #f5f5f5);
+}
+
+.privacyContainer h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.privacyContainer h2 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+}
+
+.privacyContainer p, .privacyContainer ul {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
+  margin-left: 2rem;
+}
+
+@media (max-width: 900px) {
+  .privacyContainer {
+    padding: 2rem 10rem;
+  }
+  .privacyContainer h1 {
+    font-size: 1.7rem;
+  }
+  .privacyContainer h2 {
+    font-size: 1.1rem;
+  }
+  .privacyContainer p, .privacyContainer ul {
+    font-size: 0.98rem;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .privacyContainer {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  .privacyContainer h1 {
+    font-size: 2rem;
+  }
+  .privacyContainer h2 {
+    font-size: 1.2rem;
+  }
+  .privacyContainer p, .privacyContainer ul {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+} 
