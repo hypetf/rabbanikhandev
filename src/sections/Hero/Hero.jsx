@@ -9,7 +9,7 @@ export default function Hero() {
   const [refLeft, visibleLeft] = useFadeInOnScroll();
   const [refRight, visibleRight] = useFadeInOnScroll();
   const { t } = useTranslation();
-  
+
   return (
     <section className={styles.hero} style={{ position: 'relative' }}>
       <Blob color="var(--blue)" width={600} height={350} left={150} top={100} opacity={.7} blur={60} rotationSpeed={30000} morphSpeed={20000} movementSpeed={10000} />
@@ -30,7 +30,7 @@ export default function Hero() {
           </p>
           <p>{t('hero.description2')}</p>
           <div className={styles.hero_content_right_buttons}>
-            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className={styles.download_cv_button}>{t('hero.downloadCV')}</a>
+            <a href="/RabbaniKhan_CV.pdf" target="_blank" rel="noopener noreferrer" className={styles.download_cv_button}>{t('hero.downloadCV')}</a>
             <a
               href="#skills"
               onClick={e => {

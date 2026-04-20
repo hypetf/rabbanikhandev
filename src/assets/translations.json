@@ -37,7 +37,11 @@
       "highestScore": "HIGHEST SCORE IN THE",
       "northWest": "NORTH WEST",
       "relatedLinks": "Related Links",
-      "close": "Close"
+      "close": "Close",
+      "frontend": "Frontend Development",
+      "backend": "Backend Development",
+      "tools": "Tools & Design",
+      "infrastructure": "Infrastructure & Networking"
     },
     "contact": {
       "title": "CONTACT ME",
@@ -147,7 +151,11 @@
       "highestScore": "PUNTEGGIO PIÙ ALTO NEL",
       "northWest": "NORD OVEST",
       "relatedLinks": "Link correlati",
-      "close": "Chiudi"
+      "close": "Chiudi",
+      "frontend": "Sviluppo Frontend",
+      "backend": "Sviluppo Backend",
+      "tools": "Strumenti e Design",
+      "infrastructure": "Infrastrutture e Networking"
     },
     "contact": {
       "title": "CONTATTAMI",
