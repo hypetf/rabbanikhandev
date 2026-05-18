@@ -1,0 +1,8 @@
+# robots.txt for https://hypetf.dev/
+# Rabbani Khan Portfolio
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hypetf.dev/sitemap.xml

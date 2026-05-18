@@ -1,0 +1,295 @@
+.aboutSection {
+  padding: 120px 0;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.aboutText p {
+  color: var(--c-muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.aboutHighlight {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.3;
+  border-left: 3px solid var(--c-accent);
+  padding-left: 20px;
+  margin: 32px 0;
+  letter-spacing: -0.02em;
+}
+
+.expList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.expItem {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--c-border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+}
+
+.expItem:first-child {
+  padding-top: 0;
+}
+
+.expRole {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.expCompany {
+  font-size: 0.82rem;
+  color: var(--c-accent);
+  margin-bottom: 8px;
+}
+
+.expDate {
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.expDesc {
+  font-size: 0.82rem;
+  color: var(--c-muted);
+}
+
+.expWin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--c-accent);
+  margin-top: 8px;
+}
+
+.expWin::before {
+  content: '★';
+}
+
+/* WorldSkills expandable */
+.worldskillsCard {
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  background: rgba(251, 191, 36, 0.04);
+  padding: 16px 20px;
+  margin: 24px 0;
+  transition: border-color .2s;
+}
+
+.worldskillsCard:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.wsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.wsBadge {
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(251, 191, 36, 0.9);
+  letter-spacing: -0.01em;
+}
+
+.wsSubtitle {
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin-top: 4px;
+}
+
+.wsToggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  color: rgba(251, 191, 36, 0.7);
+  flex-shrink: 0;
+  transition: transform .25s var(--ease);
+}
+
+.wsToggleOpen {
+  transform: rotate(180deg);
+}
+
+.wsBody {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .4s var(--ease);
+}
+
+.wsBodyOpen {
+  max-height: 300px;
+}
+
+.wsBodyParagraph {
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin: 16px 0 12px;
+  line-height: 1.7;
+}
+
+.wsLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wsLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.wsLink:hover {
+  color: rgba(251, 191, 36, 0.9);
+}
+
+/* Skills */
+.skillsSection {
+  margin-top: 48px;
+}
+
+.skillGroup {
+  margin-bottom: 28px;
+}
+
+.skillGroupTitle {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 12px;
+}
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillTag {
+  padding: 8px 14px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  font-size: 0.78rem;
+  color: var(--c-text);
+  transition: border-color .2s, color .2s;
+}
+
+.skillTag:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+/* EDUCATION */
+.eduContainer {
+  margin-top: 32px;
+}
+
+.eduGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.eduCard {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  backdrop-filter: var(--blur);
+  padding: 32px;
+  transition: border-color .3s;
+}
+
+.eduCard:hover {
+  border-color: var(--c-border-h);
+}
+
+.eduCardSecond {
+  margin-top: 12px;
+}
+
+.eduFlag {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.eduInst {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.eduLoc {
+  font-size: 0.75rem;
+  color: var(--c-muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.06em;
+}
+
+.eduDegree {
+  font-size: 0.85rem;
+  color: var(--c-accent);
+  margin-bottom: 8px;
+}
+
+.eduCourses {
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .aboutSection {
+    padding: 80px 0;
+  }
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .eduGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .expItem {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 0;
+  }
+  .expDate {
+    margin-top: 0;
+    white-space: normal;
+  }
+}

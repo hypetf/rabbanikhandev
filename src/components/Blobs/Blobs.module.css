@@ -1,0 +1,120 @@
+.blobWrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  /* GPU Hardware Acceleration */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.blob1 {
+  width: 700px;
+  height: 700px;
+  background: #6ee7f7;
+  top: -200px;
+  left: -200px;
+  animation: blobFloat1 22s ease-in-out infinite alternate;
+}
+
+.blob2 {
+  width: 600px;
+  height: 600px;
+  background: #a78bfa;
+  bottom: 10%;
+  right: -150px;
+  animation: blobFloat2 28s ease-in-out infinite alternate;
+  animation-delay: -6s;
+}
+
+.blob3 {
+  width: 500px;
+  height: 500px;
+  background: #f472b6;
+  top: 50%;
+  left: 30%;
+  animation: blobFloat3 19s ease-in-out infinite alternate;
+  animation-delay: -12s;
+}
+
+@keyframes blobFloat1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    background: #6ee7f7;
+  }
+  33% {
+    transform: translate3d(80px, -60px, 0) scale(1.1);
+    background: #5dd8f0;
+  }
+  66% {
+    transform: translate3d(-30px, 80px, 0) scale(0.92);
+    background: #7ef4ff;
+  }
+  100% {
+    transform: translate3d(50px, 40px, 0) scale(1.05);
+    background: #6ee7f7;
+  }
+}
+
+@keyframes blobFloat2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    background: #a78bfa;
+  }
+  40% {
+    transform: translate3d(-70px, -50px, 0) scale(1.12);
+    background: #c4a8fd;
+  }
+  70% {
+    transform: translate3d(60px, 70px, 0) scale(0.9);
+    background: #f472b6;
+  }
+  100% {
+    transform: translate3d(-40px, -30px, 0) scale(1.06);
+    background: #a78bfa;
+  }
+}
+
+@keyframes blobFloat3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    background: #f472b6;
+  }
+  50% {
+    transform: translate3d(-80px, -60px, 0) scale(1.08);
+    background: #a78bfa;
+  }
+  100% {
+    transform: translate3d(60px, 50px, 0) scale(0.94);
+    background: #f472b6;
+  }
+}
+
+/* Mobile & Tablet performance optimization */
+@media (max-width: 768px) {
+  .blob1 {
+    width: 350px;
+    height: 350px;
+    top: -100px;
+    left: -100px;
+  }
+  .blob2 {
+    width: 300px;
+    height: 300px;
+    bottom: 5%;
+    right: -100px;
+  }
+  .blob3 {
+    display: none; /* Turn off third composition layer to save battery/repaint cycles */
+  }
+}

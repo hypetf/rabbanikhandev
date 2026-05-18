@@ -1,0 +1,220 @@
+.contactSection {
+  padding: 120px 0;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contactInfo h2 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.contactHeaderOutline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+  color: transparent;
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contactHeaderAccent {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--c-accent);
+  line-height: 1.05;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.contactDescription {
+  color: var(--c-muted);
+  font-size: 0.92rem;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.socialList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.socialItem a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  transition: color .2s;
+  cursor: none;
+}
+
+.socialItem a:hover {
+  color: var(--c-accent);
+}
+
+.socialLabelContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.socialItem span {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* form */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.interestGroupWrapper {
+  margin-bottom: 8px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color .2s;
+  backdrop-filter: var(--blur);
+  -webkit-appearance: none;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: var(--c-accent);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.formGroup select option {
+  background: #12141a;
+}
+
+.topicTabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.topicTab {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  cursor: none;
+  transition: border-color .2s, color .2s, background .2s;
+}
+
+.topicTabActive,
+.topicTab:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  background: rgba(110, 231, 247, 0.05);
+}
+
+.btnSubmit {
+  padding: 16px 40px;
+  background: var(--c-accent);
+  color: #090b10;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: none;
+  align-self: flex-start;
+  transition: transform .2s var(--ease), box-shadow .2s;
+  margin-top: 8px;
+}
+
+.btnSubmit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(110, 231, 247, 0.3);
+}
+
+.formSuccess {
+  font-size: 0.82rem;
+  color: var(--c-accent);
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .contactSection {
+    padding: 80px 0;
+  }
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .btnSubmit {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+}
