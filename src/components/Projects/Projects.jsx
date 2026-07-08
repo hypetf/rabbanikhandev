@@ -6,6 +6,7 @@ import apexproxyImg from '../../assets/projects/apexproxy.png';
 import viaromaImg from '../../assets/projects/viaroma.png';
 import aerocloudOgImg from '../../assets/projects/aerocloud-og.png';
 import aerocloudNewImg from '../../assets/projects/aerocloud-new.png';
+import deddalfiniImg from '../../assets/designs/deddalfini.png';
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -172,13 +173,13 @@ const Projects = () => {
 
           {/* Ded Daniela */}
           <div className={`${styles.projCard} ${styles.medium} reveal reveal-delay-1`}>
-            <div className={`${styles.projImgPlaceholder} ${styles.placeholderDedDaniela}`}>
-              <span className={styles.titleDedDaniela}>
-                Ded Daniela<br />Dalfini<br />
-                <span className={styles.tagDedDaniela}>
-                  {t('projects.inDevelopment')}
-                </span>
-              </span>
+            <div className={`${styles.projImgPlaceholder} ${styles.placeholderDedDaniela}`} style={{ padding: 0, cursor: 'pointer' }}>
+              <img
+                className={styles.projImg}
+                src={deddalfiniImg}
+                alt="Ded Daniela Dalfini design screenshot"
+                onClick={() => openModal(deddalfiniImg, "Ded Daniela — Dalfini Design")}
+              />
             </div>
             <div className={styles.projBody}>
               <div className={styles.projTags}>
@@ -193,8 +194,8 @@ const Projects = () => {
                 {t('projects.dedDaniela.desc')}
               </p>
               <div className={styles.projLinks}>
-                <a className={styles.projLink} href="https://deddanieladalfini.it/" target="_blank" rel="noreferrer">
-                  {t('projects.preview')}
+                <a className={`${styles.projLink} ${styles.primary}`} href="https://deddalfini.it/" target="_blank" rel="noreferrer">
+                  {t('projects.live')}
                 </a>
               </div>
             </div>
